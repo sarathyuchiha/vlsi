@@ -1,0 +1,24 @@
+`timescale 1ns / 1ps
+
+
+
+module encoder(a,y);
+    output reg [2:0] a;
+    input [7:0] y;
+
+
+    always @(y) begin
+        case (y)
+            8'h01: a <= 3'b000;
+            8'h02: a <= 3'b001;
+            8'h04: a <= 3'b010;
+            8'h08: a <= 3'b011;
+            8'h10: a <= 3'b100;
+            8'h20: a <= 3'b101;
+            8'h40: a <= 3'b110;
+            8'h80: a <= 3'b111;
+            default: a <= 3'b000;  
+        endcase
+    end
+
+endmodule
