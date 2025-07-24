@@ -1,0 +1,37 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 24.07.2025 11:03:46
+// Design Name: 
+// Module Name: dff
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+module d_ff (
+    input wire clk,      // Clock
+    input wire reset,    // Reset (clears Q)
+    input wire d,        // Data input
+    output reg q         // Output
+);
+
+always @(posedge clk or posedge reset) begin
+    if (reset)
+        q <= 0;          // Reset clears Q
+    else
+        q <= d;          // On clock rising edge, copy D to Q
+end
+
+endmodule
+
