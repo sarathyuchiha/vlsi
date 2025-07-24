@@ -1,0 +1,46 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 24.07.2025 10:20:45
+// Design Name: 
+// Module Name: jkff
+// Project Name: jk flip flop
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module jk_ff (
+    input wire clk,   // Clock input
+    input wire j,     // J input
+    input wire k,     // K input
+    input wire reset, // Asynchronous reset (active high)
+    output reg q      // Output Q
+);
+
+always @(posedge clk or posedge reset) begin
+    if (reset) begin
+        q <= 0;
+    end else begin
+        case ({j, k})
+            2'b00: q <= q;       // No change
+            2'b01: q <= 0;       // Reset
+            2'b10: q <= 1;       // Set
+            2'b11: q <= ~q;      // Toggle
+            default: q <= q;
+        endcase
+    end
+end
+
+endmodule
+
